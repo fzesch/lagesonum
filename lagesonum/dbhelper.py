@@ -4,83 +4,85 @@
 
 import sqlite3
 
+DB_SETUP = '''
 
-def create_tables(con):
+CREATE TABLE IF NOT EXISTS users (
+  user VARCHAR(10),
+  is_admin BOOLEAN,
+  password VARCHAR(20)
+);
+
+CREATE TABLE IF NOT EXISTS places (
+  valregexp VARCHAR(99),
+  place VARCHAR(20),
+  max_length INTEGER,
+  min_length INTEGER,
+  user VARCHAR(10)
+);
+
+CREATE TABLE IF NOT EXISTS numbers (
+  time TIMESTAMP NOT NULL,
+  number VARCHAR(30) NOT NULL,
+  user VARCHAR(10),
+  place VARCHAR(20) NOT NULL,
+  fingerprint VARCHAR(32) NOT NULL
+);
+
+CREATE UNIQUE INDEX i1 ON numbers(number, fingerprint);
+--- CREATE UNIQUE INDEX numbers_unique ON numbers(number, fingerprint, place);
+
+'''
+
+
+def create_tables(connection):
     """
     Intializes all necessary tables, run only first time
-    :param db_con:
+    :param connection:
     :return:
     """
 
-    INPUT_TABLES = {
-        "PLACES": {"PLACE": "VARCHAR(20)",
-                   "USER": "VARCHAR(10)",
-                   "VALREGEXP": "VARCHAR(99)",
-                   "MIN_LENGTH": "INTEGER",
-                   "MAX_LENGTH": "INTEGER"},
+    with connection:
 
-        "USERS": {"USER": "VARCHAR(10)",
-                  "PW": "VARCHAR(20)",
-                  "ISADMIN": "BOOLEAN"},
-
-        "NUMBERS": {"NUMBER": "VARCHAR(30)",
-                    "TIME": "TIMESTAMP",
-                    "PLACE": "VARCHAR(20)",
-                    "USER": "VARCHAR(10)",
-                    "FINGERPRINT": "VARCHAR(32)"}
-
-    }
-
-    with con:
-
-        cur = con.cursor()
-
-       # create all tables in loop
-        for key in INPUT_TABLES:
-
-            # concat field names and data types for creation string
-            sql_string = "CREATE TABLE " + key + "(" + \
-                         " ".join(
-                             [" ".join([subkey, INPUT_TABLES[key][subkey]])+"," for subkey in INPUT_TABLES[key]]
-                         )[:-1]+ \
-                         ")"
-            # run
-            print(sql_string)
-            try:
-                cur.execute(sql_string)
-                print("Success: ", sql_string)
-            except sqlite3.OperationalError as e:
-                print(e)
+        cursor = connection.cursor()
+        # create all tables
+        cursor.executescript(DB_SETUP)
 
         # write initial record for location and user
-        LOC_STRING = 'INSERT INTO PLACES(PLACE, USER, VALREGEXP, MIN_LENGTH, MAX_LENGTH) VALUES ("LAGESO", "Helper", "^[a-zA-Z]{1,1}[0-9]+$", 1, 99)'
-        USR_STRING = 'INSERT INTO USERS(USER, PW, ISADMIN) VALUES ("Helper", "1234", "-")'
-        NUM_STRING = 'INSERT INTO NUMBERS(NUMBER, TIME; PLACE, USER, FINGERPRINT) VALUES ("A00000", "Nov 14 2011 03:12:12:947PM", "-", "-", "-")'
+        initial_queries = (
+            (
+                'INSERT INTO places(place, user, valregexp, min_length, max_length) VALUES (?,?,?,?,?)',
+                ("LAGESO", "Helper", "^[a-zA-Z]{1,1}[0-9]+$", 1, 99)
+            ),
+            (
+                'INSERT INTO users(user, password, is_admin) VALUES (?,?,?)',
+                ("Helper", "1234", "-")
+            ),
+            (
+                'INSERT INTO numbers(number, time, place, user, fingerprint) VALUES (?,?,?,?,?)',
+                ("A00000", "Nov 14 2011 03:12:12:947PM", "-", "-", "-")
+            ),
+        )
 
-        for s in [NUM_STRING, LOC_STRING, USR_STRING]:
+        for query, values in initial_queries:
             try:
-                cur.execute(s)
-                print("Success: ", s)
+                cursor.execute(query, values)
             except sqlite3.OperationalError as e:
-                print("ERROR", e)
+                print('[ERROR]:   \t{}\n           {}'.format(e, query_string))
+                raise
 
 
 def initialize_database(path):
-    print('Initializing sqlite3 database at {}'.format(path))
-    lagesonrdb = sqlite3.connect(path)
-    create_tables(lagesonrdb)
+    db = sqlite3.connect(path)
+    create_tables(db)
 
-    cur = lagesonrdb.cursor()
+    cur = db.cursor()
 
-    cur.execute("SELECT name FROM sqlite_master WHERE type='table'")
+    cur.execute('SELECT name FROM sqlite_master WHERE type=?', ("table",))
 
-    rows = cur.fetchall()
+    for row in cur.fetchall():
+        print(row)
 
-    for row in rows:
-        print(row[0])
-
-    lagesonrdb.close()
-    print('Database initialized.')
+    db.close()
 
 
 if __name__ == '__main__':

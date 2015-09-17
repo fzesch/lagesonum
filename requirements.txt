@@ -12,3 +12,4 @@ bottle-utils-lazy==0.3.2
 bottle-utils-meta==0.3.2
 python-dateutil==2.4.2
 six==1.9.0
+WebTest==2.0.18
