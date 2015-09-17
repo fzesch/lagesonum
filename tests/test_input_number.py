@@ -1,7 +1,3 @@
-__author__ = 'f.zesch'
+# coding: utf-8
 
 # test cases for validation function: success, failure, sanity
-
-import unittest
-
-
