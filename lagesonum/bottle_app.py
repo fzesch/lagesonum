@@ -4,8 +4,9 @@
 from dateutil import parser
 import sqlite3
 import os
-import time
 import datetime
+import threading
+import locale
 from babel.dates import format_datetime
 from babel.core import Locale, UnknownLocaleError
 
@@ -18,9 +19,13 @@ from bottle_utils.i18n import lazy_gettext as _
 from input_number import is_valid_number, parse_numbers, get_fingerprint
 from dbhelper import initialize_database
 
+from contextlib import contextmanager
+
 # store database outside of repository so it is not overwritten by git pull
 MOD_PATH = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.abspath(os.path.join(MOD_PATH, '../', '../', "lagesonr.db"))
+
+LOCALE_LOCK = threading.Lock()
 
 if not os.path.exists(DB_PATH):
     initialize_database(DB_PATH)
@@ -50,6 +55,15 @@ def get_valid_locale(l):
 BaseTemplate.defaults['request'] = request
 BaseTemplate.defaults['locale_datetime'] = lambda d: format_datetime(d, format="short", locale=get_valid_locale(request.locale))
 
+
+@contextmanager
+def setlocale(name):
+    with LOCALE_LOCK:
+        saved = locale.setlocale(locale.LC_ALL)
+        try:
+            yield locale.setlocale(locale.LC_ALL, name)
+        finally:
+            locale.setlocale(locale.LC_ALL, saved)
 
 @route('/')
 @view('views/query_page')
@@ -165,7 +179,6 @@ def send_static(filename):
 def send_static():
     return static_file("favicon.png", root=os.path.join(MOD_PATH, 'static'))
 
-
 # Numbers to be shown there:
 # All numbers that have been entered 3 or more times and where the last time of entry is not older than X minutes.
 # For the "last time of entry age" it would be great to collect stats how long numbers are displayed in average.
@@ -174,30 +187,30 @@ def send_static():
 @route('/display')
 @view('views/display')
 def display():
+    #todo: later, refactor in constants file if up and running
+    MIN_COUNT = 3
+    MIN_DAYS = 5
+    oldest_to_be_shown = datetime.datetime.today()-datetime.timedelta(days=MIN_DAYS)
+
     with lagesonrdb as connection:
         cursor = connection.cursor()
 
-        #todo: later, refactor in constants file if up and running
-        MAX_TIME_DIFF = 4.32*10000000 # 5 days in milliseconds
-        MIN_COUNT = 3
-        oldest_to_be_shown = time.time()-MAX_TIME_DIFF
-
-        select_query = 'SELECT number, time FROM numbers'
+        select_query = 'SELECT number FROM numbers WHERE time >= "' \
+                + oldest_to_be_shown.strftime('%Y-%m-%d %H:%M:%S') + \
+                '" GROUP BY number HAVING COUNT(number) >= ' + str(MIN_COUNT)
 
         result = cursor.execute(select_query).fetchall()
 
-
     # filter numbers entered recently enough
-    numbers_young_enough = [number for number, nrtime in result if nrtime.timestamp() >= float(oldest_to_be_shown)]
-
-    # filter numbers entered often enough
-    numbers_frequent_enough = [n for n in numbers_young_enough if numbers_young_enough.count(n) >= MIN_COUNT]
+    numbers_young_enough = [number[0] for number in result]
 
     # format numbers for later output
-    display_output = "\n".join(sorted(set(numbers_frequent_enough)))
+    display_output = "\n".join(sorted(set(numbers_young_enough)))
 
+    with setlocale(get_valid_locale(request.locale)):
+        since = oldest_to_be_shown.strftime("%x %X")
     return {'numbers': display_output,
-            'since': str(datetime.datetime.fromtimestamp(oldest_to_be_shown))[:16],
+            'since': since,
             'min_count': MIN_COUNT
             }
 

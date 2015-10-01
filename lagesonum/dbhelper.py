@@ -59,7 +59,7 @@ def create_tables(connection):
             ),
             (
                 'INSERT INTO numbers(number, time, place, user, fingerprint) VALUES (?,?,?,?,?)',
-                ("A00000", "Nov 14 2011 03:12:12:947PM", "-", "-", "-")
+                ("A00000", "2011-11-14 03:12:12", "-", "-", "-")
             ),
         )
 
