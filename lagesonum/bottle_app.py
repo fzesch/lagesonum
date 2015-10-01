@@ -88,7 +88,7 @@ def do_enter():
 
         for num in numbers:
             if is_valid_number(num):
-                values = (num.capitalize(), usr_hash, 'LAGESO', timestamp)
+                values = (num.upper(), usr_hash, 'LAGESO', timestamp)
                 try:
                     cursor.execute(insert_query, values)
                     result_num.append(num)
