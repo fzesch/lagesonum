@@ -155,7 +155,7 @@ msgstr ""
 
 msgid "numberdisplaytxt"
 msgstr ""
-"These numbers have been entered since %(since)s by at least %(min_count)s "
+"These numbers have been entered latest since %(since)s by at least %(min_count)s "
 "different persons."
 
 msgid "webpagetitle"
