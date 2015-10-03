@@ -160,7 +160,7 @@ msgstr ""
 
 msgid "numberdisplaytxt"
 msgstr ""
-"Diese Nummern wurden seit %(since)s von mindestens %(min_count)s "
+"Diese Nummern wurden als letzte seit %(since)s von mindestens %(min_count)s "
 "verschiedenen Personen eingegeben."
 
 msgid "webpagetitle"

@@ -179,18 +179,20 @@ def send_static():
 @view('views/display')
 def display():
     # TODO move time delta and count to soem other location, e.g. configuration
-    max_days = 5
+    max_days = 21
     min_count = 3
 
-    oldest_to_be_shown = datetime.datetime.now() - datetime.timedelta(days=max_days)
-    # TODO optimize query even more, so we don't need to iterate manually?!
+    oldest_to_be_shown = datetime.datetime.combine(datetime.date.today() - datetime.timedelta(days=max_days),
+                                                   datetime.datetime.min.time())
+    # TODO optimize query, so we don't need to iterate manually, e.g. by selecing only count > min_count!
     # TODO make Place variable and part of WHERE
-    numbers = Number.select(Number.number).join(Place).switch(Number).annotate(Place).\
-        where(Number.time >= oldest_to_be_shown).order_by(Number.number, Number.time)
+    numbers = Number.select(Number.number, Number.time, fn.Count(Number.number).alias('count')).\
+        where(Number.time >= oldest_to_be_shown).group_by(Number.number).order_by(Number.time.desc(), Number.number)
 
     # filter numbers entered often enough
     # format numbers for later output
-    display_output = "\n".join(sorted(set([n.number for n in numbers if n.count >= min_count])))
+    display_output = sorted([{'num': n.number, 'count': int(n.count)}
+                             for n in numbers if int(n.count) >= min_count][:18], key=lambda n: n['num'])
 
     since = format_datetime(oldest_to_be_shown, 'short', locale=request.locale)
     return {'numbers': display_output,
