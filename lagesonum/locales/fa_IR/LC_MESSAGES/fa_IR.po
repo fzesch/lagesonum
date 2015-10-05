@@ -1,19 +1,21 @@
-#
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.0\n"
+"Project-Id-Version: lagesonum-1\n"
 "Report-Msgid-Bugs-To: you@example.com\n"
 "POT-Creation-Date: 2007-10-18 14:00+0100\n"
-"PO-Revision-Date: 2007-10-18 14:00+0100\n"
-"Last-Translator: you <you@example.com>\n"
-"Language-Team: English <yourteam@example.com>\n"
+"PO-Revision-Date: 2015-10-05 11:55+0000\n"
+"Last-Translator: Christoph\n"
+"Language-Team: Persian (Iran) (http://www.transifex.com/coders4help/lagesonum-1/language/fa_IR/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa_IR\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "errinvalinput"
-msgstr ""
-"ورودی شما فاقد اعتبار می‌باشد.لطفا حروف و اعداد را بدون فاصله وارد کنید"
+msgstr "ورودی شما فاقد اعتبار می‌باشد.لطفا حروف و اعداد را بدون فاصله وارد کنید"
 
 msgid "errnotfound"
 msgstr "متاسفانه این شماره از تاریخ ۲۸.۹.۲۰۱۵ اعلام نشده است"
@@ -22,9 +24,7 @@ msgid "txtnumber"
 msgstr "انتظار شماره"
 
 msgid "txtgreeting"
-msgstr ""
-"   به  LAGeSoNU شماره غیر رسمیه انتظار برای پناهندگان در وزارت بهداشت و امور"
-" اجتماعی در برلین خوش آمدید "
+msgstr "   به  LAGeSoNU شماره غیر رسمیه انتظار برای پناهندگان در وزارت بهداشت و امور اجتماعی در برلین خوش آمدید "
 
 msgid "menulanguage"
 msgstr "فارسی"
@@ -39,19 +39,13 @@ msgid "about_link"
 msgstr "درباره ما"
 
 msgid "search_pitch"
-msgstr ""
-"اگر میخواهید بدانید که آیا شماره شما قبلا درLaGeSo اعلام شده است، شماره خود "
-"را در اینجا وارد کنید"
+msgstr "اگر میخواهید بدانید که آیا شماره شما قبلا درLaGeSo اعلام شده است، شماره خود را در اینجا وارد کنید"
 
 msgid "erruniquenumber"
-msgstr ""
-"شما این شماره را قبلا ارسال کرده‌اید.لطفا شماره دیگری را انتخاب کنید. از "
-"همکاری شما متشکریم"
+msgstr "شما این شماره را قبلا ارسال کرده‌اید.لطفا شماره دیگری را انتخاب کنید. از همکاری شما متشکریم"
 
 msgid "pleasenote"
-msgstr ""
-"این وب سا یت‌ از تاریخ ۲۸ سپتامبر۲۰۱۵ فعال می‌باشد و فاقد شماره هایی  است که"
-" قبل از این تاریخ داده شده اند"
+msgstr "این وب سا یت‌ از تاریخ ۲۸ سپتامبر۲۰۱۵ فعال می‌باشد و فاقد شماره هایی  است که قبل از این تاریخ داده شده اند"
 
 msgid "pleasenote_title"
 msgstr "لطفا توجه نمایید"
@@ -66,9 +60,7 @@ msgid "dataprivacy"
 msgstr "سیاست حفظ خصوصی اطلاعات شما"
 
 msgid "dataprivacytext"
-msgstr ""
-"لطفا توجه داشته باشید که برای ارائه این خدمات، اطلاعات شما اعم "
-"ازIp,جزئیاتبروزر  وتنظیمات زبان  ذخیره میشود  "
+msgstr "لطفا توجه داشته باشید که برای ارائه این خدمات، اطلاعات شما اعم ازIp,جزئیاتبروزر  وتنظیمات زبان  ذخیره میشود  "
 
 msgid "ongithub"
 msgstr ""
@@ -122,12 +114,10 @@ msgid "display_link"
 msgstr "صفحه نمایش"
 
 msgid "alphabetorder"
-msgstr ""
-"اعداد به ترتیب الفبا دسته‌بندی شده‌اندو ممکن است در صفحه نمایش متفاوت باشند "
+msgstr "اعداد به ترتیب الفبا دسته‌بندی شده‌اندو ممکن است در صفحه نمایش متفاوت باشند "
 
 msgid "numberdisplaytxt"
-msgstr ""
-"این شماره از سال٪ (از) S با حداقل٪   (min_count) S) افراد مختلف وارد شده است"
+msgstr "این شماره از سال٪ (از) S با حداقل٪   (min_count) S) افراد مختلف وارد شده است"
 
 msgid "webpagetitle"
 msgstr "LAGeSoNUM پناهندگان خوش آمدید"
@@ -154,13 +144,16 @@ msgid "numberorigin_head"
 msgstr "چگونه میدانید که شماره شما نمایش داده شده است؟"
 
 msgid "numberorigin_xplain"
-msgstr ""
-"شماره انتظار توسط افرادی که در صف منتظر هستند و داوطلبان ارائه شده است.از "
-"مقامات رسمی‌ خواهشمندیم که مرا در این امور یاری کنند"
+msgstr "شماره انتظار توسط افرادی که در صف منتظر هستند و داوطلبان ارائه شده است.از مقامات رسمی‌ خواهشمندیم که مرا در این امور یاری کنند"
 
 msgid "numbermissed_head"
-msgstr ""
-"زمانی‌ که شماره انتظار من نشان داده شد من آنجا نبودام، حال چکار باید کرد؟"
+msgstr "زمانی‌ که شماره انتظار من نشان داده شد من آنجا نبودام، حال چکار باید کرد؟"
 
 msgid "numbermissed_xplain"
+msgstr ""
+
+msgid "pressrelease_heading"
+msgstr ""
+
+msgid "pm_start"
 msgstr ""

@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[lagesonum-1.messages]
+file_filter = locales/<lang>/LC_MESSAGES/<lang>.po
+source_file = locales/en_US/LC_MESSAGES/en_US.po
+source_lang = en_US
+type = PO

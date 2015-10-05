@@ -1,0 +1,159 @@
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: lagesonum-1\n"
+"Report-Msgid-Bugs-To: you@example.com\n"
+"POT-Creation-Date: 2007-10-18 14:00+0100\n"
+"PO-Revision-Date: 2015-10-05 12:00+0000\n"
+"Last-Translator: Christoph\n"
+"Language-Team: Esperanto (http://www.transifex.com/coders4help/lagesonum-1/language/eo/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: eo\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "errinvalinput"
+msgstr "Maltaŭga enigo. Bv. tajpi literon sekvitan de nombroj, sen interspacoj."
+
+msgid "errnotfound"
+msgstr "Ni bedaŭras, tiu numeron ne estis sur la tabulo ekde la 14a de septembro 2015"
+
+msgid "txtnumber"
+msgstr "Atendonumero"
+
+msgid "txtgreeting"
+msgstr "Bonvenon al LAGeSoNUM, maloficiala atendonumeromontrado interreta por rifughintoj che LAGeSo."
+
+msgid "menulanguage"
+msgstr "Esperanto"
+
+msgid "searchanumber_link"
+msgstr "Via numero"
+
+msgid "helpus_link"
+msgstr "Kunlaboru"
+
+msgid "about_link"
+msgstr "Pri ni"
+
+msgid "search_pitch"
+msgstr "Ĉu via numero estis afiŝita ĉe LAGeSo? Entajpu ĝin ĉi tie por eltrovi!"
+
+msgid "erruniquenumber"
+msgstr "Via jam entajpis tiun numeron. Bv. elekti alian de la tabulo. Dankegon pro via helpo!"
+
+msgid "pleasenote"
+msgstr "Tiu retejo estis lanĉita je la 22a de septembro 2015. Antaŭaj numeroj ne estas en la datumbazo."
+
+msgid "pleasenote_title"
+msgstr "Bv. noti:"
+
+msgid "txtabout"
+msgstr "Tiu retejo estis kreita far volontuloj. Ĝia celo estas, ke azilpetantoj, kiuj ne troviĝas sur la tereno de LAGeSo povas kontrol, ĉu siaj atendonumeroj jam estis afiŝitaj sur la tabulo. Ekzistas mobilaj registroteamoj, kiuj venas al la tranoktejoj, sed la procedo estas tre malrapida kaj ne travidebla por homoj kun atendonumeroj. Homoj devas atendi ĝis dekkvin tagojn la alvenon de la teamoj. Tio igis ilin malfidi la sistemon kaj la senton, ke ili maltrafis ion. Bedaŭrinde, ankaŭ okazis, ke homoj de la oficialaj amastranoktejoj estis resenditaj al LAGeSo la sekvan matenon, ĉu ili havis atendonumeron aŭ ne. Ni esperas, ke tiu ĉi retejo helpas al homoj pli bone kompreni la tutan procedon de la atendonumeroj. Homoj kun atendonumeroj, bv. sendi al ni vian opinion, kiuj informoj aŭ funkcioj mankas, kaj ni klopodos provizi ĝin."
+
+msgid "txtheadabout"
+msgstr "Pri tiu ĉi retejo"
+
+msgid "dataprivacy"
+msgstr "Deklaro pri datumprotekto"
+
+msgid "dataprivacytext"
+msgstr "Por provizi tiun ĉi retejon, ni uzas personrilatajn datumojn, ia. ip-adreso, retumilo kaj lingvopreferojn."
+
+msgid "ongithub"
+msgstr "Programkodo kaj kompleta listo de aŭtoroj estas disponeblaj je"
+
+msgid "supportedbycoders"
+msgstr "Kun subteno de"
+
+msgid "techimplementation"
+msgstr "Teknika realigo"
+
+msgid "dataprivacyheading"
+msgstr "Deklaro pri datumprotekto"
+
+msgid "contact_link"
+msgstr "Kontakto"
+
+msgid "submit_label"
+msgstr "Sendi"
+
+msgid "help_pitch"
+msgstr "Ĉu vi estas surloke ĉe LAGeSo? Bv. helpi al ni ĝisdatigi tiun ĉi retejon, enigante ĉiujn numerojn, kiujn vi vidas sur la numerotabulo. NE enigu vian propran atendonumeron"
+
+msgid "about_par1"
+msgstr "Tiu ĉi retejo estis kreita de volontuloj. Ĝia celo estas, ke azilpetantoj, kiuj ne troviĝas sur la LAGeSo-tereno povu vidi, ĉu siaj atendonumeroj estis afiŝitaj."
+
+msgid "about_par2"
+msgstr "Ni esperas, ke tiu ĉi retejo helpas igi la tutan atendonumeroprocedon pli travidebla. Atendantoj kun atendonumeroj, bv. sendi al ni vian opinion, kiuj informoj aŭ funkcioj mankas al vi. Ni klopodos provizi ilin!"
+
+msgid "about_par3"
+msgstr "Vi povas legi pli pri tiu problemaro en germanlingva gazetartikolo de taz."
+
+msgid "tazlink"
+msgstr "al la artikolo"
+
+msgid "querysuccess"
+msgstr "Via atendonumero %(number)s estis videbla sur la montrotabulo ĉe LAGeSo"
+
+msgid "foundonce"
+msgstr "Unu homo vidis kaj enigis vian atendonumeron al nia retejo je %(date)s."
+
+msgid "foundmultiple"
+msgstr "%(amount)s homoj vidis vian numeron sur la montrotabulo de LAGeSo kaj entajpis la numeron en nian retejon."
+
+msgid "morelikely"
+msgstr "Bv. noti: Ju pli da homoj enigis vian numeron, des pli fidinde kredeblas, ke via numero vere estis sur la montrotabulo kaj ne enigita malbonintence au mistajpe."
+
+msgid "inputexample"
+msgstr "ekz. A123"
+
+msgid "display_link"
+msgstr "Montrotabulo"
+
+msgid "alphabetorder"
+msgstr "La numeroj estas en alfabeta ordo."
+
+msgid "numberdisplaytxt"
+msgstr "Tiuj numeroj estis enigitaj ekde %(since)s de minimume %(min_count)s diversaj personoj."
+
+msgid "webpagetitle"
+msgstr "LAGeSoNUM"
+
+msgid "nonumbersentered"
+msgstr "Neniuj numeroj estis enigitaj ekde %(since)s de minimume %(min_count)s diversaj personoj.Ni bezonas pli da helpantoj, kiuj enigas nombrojn."
+
+msgid "responsible_name"
+msgstr "Daniela Grebe"
+
+msgid "responsible_address"
+msgstr "c/o Zesch, Bornemannstr. 11, 13357 Berlin"
+
+msgid "novalidnumbers"
+msgstr "Neniuj validaj numeroj enigitaj."
+
+msgid "supportedby"
+msgstr "subtenitaj de coders4help kaj"
+
+msgid "entered"
+msgstr "Elkoran dankon! Vi sukcese enigis la sekvan atendonumeron en la datumbazon:"
+
+msgid "numberorigin_head"
+msgstr "De kie vi scias, kiam mia atendonumero estis montrita?"
+
+msgid "numberorigin_xplain"
+msgstr "La atendonumeroj estas enigitaj de homoj en la vico antau la montrotabulo au de libervolaj helpantoj. Ni bonvenigas kunlaboron de oficialuloj, bv. skribi al ni."
+
+msgid "numbermissed_head"
+msgstr "Mia atendonumero estis montrita, sed mi maltrafis ghin. Kion mi faru?"
+
+msgid "numbermissed_xplain"
+msgstr "Bv. skribi al ni per la kontaktformularo. Ni provos peri inter vi kaj LAGeSo."
+
+msgid "pressrelease_heading"
+msgstr "Gazetaraj komunikoj"
+
+msgid "pm_start"
+msgstr "okaze de la enretigo de lagesonum.de je la 29a de septembro 2015"
