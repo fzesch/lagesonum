@@ -1,7 +1,7 @@
 % setdefault('current_lang', [l for l in languages if l[0] == request.locale][0])
 
 <!DOCTYPE html>
-<html class="no-js" lang="">
+<html class="no-js" lang="{{current_lang[0][:1]}}" dir="{{current_lang[3]}}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -86,7 +86,7 @@
               <img src="/static/languages.png" alt="pick a language" width="20" height="20" class="navbar-lang-icon"> {{current_lang[1]}}<span class="caret"/>
             </a>
             <ul class="dropdown-menu">
-              % for (code, label, trans_table) in languages:
+              % for (code, label, trans_table, dir) in languages:
                 <li>
                   <a href="{{i18n_path(request.path, code)}}">
                     {{label}}
