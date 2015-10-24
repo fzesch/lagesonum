@@ -67,60 +67,6 @@ class CustomRedirectView(RedirectView):
         return super().get_redirect_url(*args, **kwargs)
 
 
-class EnterView(TemplateView, FormMixin):
-    http_method_names = ['get', 'post']
-    form_class = EnterForm
-    template_name = 'enter.html'
-
-    def get_context_data(self, **kwargs):
-        logger.debug(u'Gathering context data')
-        if not 'form' in kwargs:
-            kwargs['form'] = self.form_class()
-        if not 'locations' in kwargs:
-            kwargs['locations'] = self.locations
-        context = super().get_context_data(**kwargs)
-        return context
-
-    def post(self, request, *args, **kwargs):
-        response_data = {'locations': self.locations, 'entered': {}, 'nonunique': {}, 'failed': {}}
-
-        form = self.get_form()
-        response_data.update({'form': form})
-
-        if not form.is_valid():
-            logger.error(u'Errors: %s', form.errors.as_data())
-            response_data.update({'failed': form.errors.as_data()})
-
-        if 'location' in form.cleaned_data:
-            location = form.cleaned_data['location']
-            if 'numbers' in form.cleaned_data:
-                entered = []
-                nonunique = []
-                failed = response_data['failed'] if 'failed' in response_data else []
-                for number in form.cleaned_data['numbers']:
-                    try:
-                        n = Number(number=number, location=location).save()
-                    except IntegrityError:
-                        nonunique.append(number)
-                    except Exception as e:
-                        failed.append(ValueError(str(e), code='persist_error', params={'number': number}))
-                        pass
-                    else:
-                        entered.append(number)
-                        pass
-                response_data.update({'entered': entered, 'nonunique': nonunique, 'failed': failed,
-                                      'timestamp': datetime.today()})
-
-        logger.debug(u'Response data: %s', response_data)
-        response = render(request, self.template_name, dictionary=response_data)
-
-        return response
-
-    @property
-    def locations(self):
-        return Place.objects.values('id', 'name')
-
-
 class QueryView(TemplateView, FormMixin):
     http_method_names = ['get', 'post']
     form_class = QueryForm

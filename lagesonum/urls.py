@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^auth/login/$', auth_views.login, name='login', kwargs={'template_name': 'login.html'}),
     url(r'^auth/logout/$', auth_views.logout, name='logout', kwargs={'template_name': 'logged_out.html'}),
-    url(r'^$', website.views.CustomRedirectView.as_view(permanent=False, pattern_name='enter'), name='home'),
+    url(r'^$', website.views.CustomRedirectView.as_view(permanent=False, pattern_name='query'), name='home'),
     url(r'^about$', django.views.generic.TemplateView.as_view(template_name='about.html'), name='about'),
     url(r'^imprint$', django.views.generic.TemplateView.as_view(template_name='imprint.html'), name='imprint'),
     url(r'^setlang/$', website.views.set_language, name='set_lang'),
@@ -38,7 +38,6 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     url(r'^$', website.views.CustomRedirectView.as_view(permanent=False, pattern_name='enter'), name='home'),
-    url(r'^enter$', website.views.EnterView.as_view(), name='enter'),
     url(r'^query$', website.views.QueryView.as_view(), name='query'),
     url(r'^display$', website.views.DisplayView.as_view(), name='display'),
 )
