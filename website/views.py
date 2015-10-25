@@ -177,39 +177,41 @@ class SubscribeView(TemplateView, FormMixin):
         # form doesn't have cleaned_data until it's been validated
         if not form.is_valid():
             logger.error(u'Errors: %s', form.errors.as_data())
-            #TODO show error to user 
-            raise ValidationError(form.errors)
+        else:
         
-        try:
-            # insert into database
-            number = form.cleaned_data['number']
-            email = form.cleaned_data['email']
-            phone = form.cleaned_data['phone']
-            telegram = form.cleaned_data['telegram']
-            
-            n = Subscription(number=number, email=email, phone=phone, telegram=telegram).save()
-            
-            # send confirmation
-            if email:
-                # FIXME make this in selected language
-                subject = 'Please confirm your subscripton!'
-                message = 'Click HERE to confirm subscription...'
-                # FIXME Have a configuration for this!!!
-                from_email = 'postelle@lasego.berlin.de'
-
-                # FIXME Error handling
-                sendmail = EmailMessage(subject=subject, body=message, from_email=from_email, to=[email])
-                sendmail.send()
+            try:
+                # insert into database
+                number = form.cleaned_data['number']
+                email = form.cleaned_data['email']
+                phone = form.cleaned_data['phone']
+                telegram = form.cleaned_data['telegram']
                 
-        except Exception as e:
-            # TODO show error to user
-            raise RuntimeError(e)
-        pass
+                Subscription(number=number, email=email, phone=phone, telegram=telegram).save()
+                
+                # send confirmation
+                if email:
+                    # FIXME make this in selected language
+                    subject = 'Please confirm your subscripton!'
+                    message = 'Click HERE to confirm subscription...'
+                    # FIXME Have a configuration for this!!!
+                    from_email = 'postelle@lasego.berlin.de'
+
+                    # FIXME Error handling
+                    sendmail = EmailMessage(subject=subject, body=message, from_email=from_email, to=[email])
+                    sendmail.send()
+                    
+            except Exception as e:
+                # TODO show error to user
+                raise RuntimeError(e)
+            pass
 
         # TODO tell the user what happened: success or fail
-        response = render(request, self.template_name)
+        response = render(request, self.template_name, {'form': form})
         return response
      
-                
+    def get_success_url(self):
+        result = super(SubscribeView, self).get_success_url()
+        logger.debug(u'Yeah, we are asked for SUCCESS Url :/: %s', result)
+        return result           
 
 

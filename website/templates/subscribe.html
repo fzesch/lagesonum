@@ -8,16 +8,9 @@
                 <p>{% trans 'subscribe_pitch' %}</p>
                 <form action="{% url 'subscribe' %}" method="post" class="form-inline" style="margin-bottom:20px;" id="subscribe-form" role="form">
                     {% csrf_token %}
-                    {{ form }}
+                    {{ form.as_p }}
                     <button class="btn btn-primary">{% trans 'submit_label' %}</button>
                 </form>
-
-
-                <div id="result">
-                {% if result %}
-                    {% include 'partials/query_result.html' %}
-                {% endif %}
-                </div>
             </div>
         </div>
     {% endspaceless %}
